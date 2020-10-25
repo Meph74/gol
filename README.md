@@ -15,6 +15,15 @@ A Dockerfile is included with the intent of running this app inside a docker con
   * Connect to the shell inside the container: docker exec -it bw /bin/bash
     * Run: rails db:create
     * Run: rails db:migrate
+    * Create config/application.yml and add the following content: (the file is ignored by git as it normally would contain secrets. We just need it for some config values)
+```ruby
+LOCALHOST: "true"
+RAILS_SERVE_STATIC_FILES: "true"
+DB_HOST: "postgres"
+DB_NAME: "gol_dev"
+DB_PWD: "postgres"
+DB_USER: "postgres"
+```
 
 The reason I am just using a Dockerfile here and not docker compose is because I am using docker with WSL2 and there is an issue with the docker compose command and linking other containers in that envrionment.
 
